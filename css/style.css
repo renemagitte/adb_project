@@ -1,0 +1,13 @@
+.header{
+    text-align: center;
+}
+
+.left_field{
+    width: 300px;
+    float: left;
+}
+
+.right_field{
+    width: 300px;
+    float: left;
+}

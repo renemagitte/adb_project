@@ -1,32 +1,71 @@
-<?php
-require 'partials/session.php';
-?>
+<?php session_start(); ?>
 
 
 <!DOCTYPE html>
 
 <html lang="en">
 
-<?php
-require 'head.php';
-require 'partials/database.php';
-require 'partials/print_posts.php';
-require 'partials/index_statements.php'; 
-?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>ADB</title>
+</head>
 
 <body>
-
     
+<?php
+    if(!(isset($_SESSION["user"]))){
+?>
 
- 
-   
-    <?php
-        require "footer.php";
-    ?>
+    <div class="left_field">
+      Register:
+        <form action="partials/register.php" method="POST">
+            <div class="form-group">
+              <label for="artistname"> Artistname </label>
+              <input id="artistname" type="text" name="artistname" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="email"> Email </label>
+              <input id="email" type="email" name="email" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="password"> Password </label>
+              <input id="password" type="password" name="password" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <input type="submit" value="Registrera dig" class="btn button-green">
+            </div>
+      </form>
+    </div>
     
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <div class="right_field">
+    
+       <?php
+            require 'login_form.php';
+        ?>
+
+    </div>
+<?php
+    }
+
+
+    if(isset($_SESSION["user"])){
+        require 'profile.php';
+    }
+    
+?>
+
+
+
+
+
 
 </body>
-
 </html>
